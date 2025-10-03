@@ -3,11 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Eric Muriuki — Portfolio</title>
-  <meta name="description" content="Portfolio and CV of Eric Muriuki: Software Development, ICT Support, and Projects." />
+  <title>Your Name — Portfolio</title>
+  <meta name="description" content="Professional portfolio: CV, projects, lab challenges, contact." />
   <style>
-    /* Same CSS styling as your template (unchanged for brevity) */
-    /* ---------- Simple, modern CSS ---------- */
+    /* ---------- Simple, modern CSS (single-file) ---------- */
     :root{
       --bg:#0f1724; --card:#0b1320; --muted:#9aa4b2; --accent:#6ee7b7; --glass: rgba(255,255,255,0.03);
       --glass-2: rgba(255,255,255,0.02); --glass-border: rgba(255,255,255,0.04);
@@ -17,39 +16,79 @@
     html,body{height:100%;margin:0;font-family:var(--font-stack);background:linear-gradient(180deg,#061021 0%, #071426 60%);color:#ecf0f6}
     .container{max-width:var(--maxw);margin:36px auto;padding:28px}
     header{display:flex;gap:28px;align-items:center}
+
+    /* Avatar */
     .avatar{width:112px;height:112px;border-radius:20px;flex:0 0 112px;overflow:hidden;border:2px solid var(--glass-border);background:linear-gradient(135deg,var(--card),var(--glass));display:flex;align-items:center;justify-content:center}
     .avatar img{width:100%;height:100%;object-fit:cover}
+
+    /* Name & tagline */
     h1{margin:0;font-size:28px;letter-spacing:-0.2px}
     p.tagline{margin:6px 0 0;color:var(--muted)}
+
+    /* Top actions */
     .actions{margin-left:auto;display:flex;gap:12px}
     .btn{background:transparent;border:1px solid var(--glass-border);padding:8px 12px;border-radius:10px;cursor:pointer;color:var(--accent);font-weight:600}
+
+    /* Layout */
     main{display:grid;grid-template-columns:360px 1fr;gap:24px;margin-top:24px}
     nav.card, .resume.card{background:linear-gradient(180deg,var(--card),var(--glass));padding:18px;border-radius:var(--radius);border:1px solid var(--glass-border)}
+
+    /* Left column */
     nav.card ul{list-style:none;padding:0;margin:10px 0}
     nav.card li{padding:10px 8px;border-radius:8px;color:var(--muted);cursor:pointer}
     nav.card li:hover{background:var(--glass-2);color:#fff}
+
+    /* Resume */
     .resume h2{margin-top:0}
     .section{margin-bottom:14px}
     .muted{color:var(--muted);font-size:13px}
     .tag{display:inline-block;background:rgba(255,255,255,0.03);padding:4px 8px;border-radius:8px;border:1px solid var(--glass-border);margin-right:8px;font-size:13px}
+
+    /* Projects grid */
     .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
     .card-project{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:12px;border-radius:12px;border:1px solid var(--glass-border)}
     .card-project h3{margin:6px 0}
     .project-meta{font-size:13px;color:var(--muted)}
+
+    /* Lab challenges */
+    .lab{border-radius:10px;border:1px solid var(--glass-border);background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);padding:12px}
+    details{margin-bottom:10px}
+    summary{cursor:pointer;font-weight:600}
+    pre{background:#051021;padding:12px;border-radius:8px;overflow:auto;color:#bfead6}
+    .tools{font-size:13px;color:var(--muted)}
+
+    /* Modal screenshot viewer */
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);z-index:60}
+    .modal.open{display:flex}
+    .modal .inner{max-width:900px;width:92%;background:#071426;padding:12px;border-radius:10px}
+    .modal img{width:100%;height:auto;border-radius:8px}
+
+    /* Footer/contact */
     footer{margin-top:26px;padding:14px;border-radius:10px;border:1px solid var(--glass-border);background:linear-gradient(180deg,transparent, rgba(255,255,255,0.01));display:flex;justify-content:space-between;align-items:center}
     .social a{margin-right:10px;color:var(--muted);text-decoration:none}
+
+    /* Responsive */
     @media (max-width:920px){main{grid-template-columns:1fr;}.avatar{width:88px;height:88px}}
-    @media print{body{background:#fff;color:#000}header, .actions, nav.card, footer{display:none}.container{max-width:800px}}
+
+    /* Print: make resume printable */
+    @media print{
+      body{background:#fff;color:#000}
+      header, .actions, nav.card, footer{display:none}
+      .container{max-width:800px}
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <div class="avatar"><img src="your-photo.jpg" alt="Eric Muriuki" /></div>
+      <div class="avatar" aria-hidden="true">
+        <!-- Replace src with your headshot (square) -->
+        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='600'><rect rx='24' width='100%' height='100%' fill='%23071426'/><text x='50%' y='50%' alignment-baseline='middle' text-anchor='middle' fill='%236ee7b7' font-size='36' font-family='Arial'>Your Photo</text></svg>" alt="Your name photo" />
+      </div>
       <div>
-        <h1 id="name">Eric Muriuki</h1>
-        <div class="muted">Software Developer • ICT Support • Web Enthusiast</div>
-        <p class="tagline" id="tagline">Passionate about building systems with HTML, CSS, JavaScript, PHP, and MySQL. Skilled in IT troubleshooting and eager to grow in ICT environments.</p>
+        <h1 id="name">Your Name</h1>
+        <div class="muted">Software Engineer • Cybersecurity Researcher • ML Enthusiast</div>
+        <p class="tagline" id="tagline">Professional statement / tagline — e.g. building secure and scalable systems, and turning research into production-ready features.</p>
       </div>
       <div class="actions">
         <button class="btn" onclick="downloadResume()">Download Resume (PDF)</button>
@@ -58,57 +97,64 @@
     </header>
 
     <main>
-      <nav class="card">
+      <nav class="card" aria-label="quick navigation">
         <strong>Navigation</strong>
         <ul>
           <li onclick="document.getElementById('resume').scrollIntoView({behavior:'smooth'})">Resume</li>
           <li onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">Projects</li>
+          <li onclick="document.getElementById('labs').scrollIntoView({behavior:'smooth'})">Lab Challenges</li>
           <li onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</li>
         </ul>
         <hr style="border:0;border-top:1px solid var(--glass-border);margin:12px 0" />
         <div class="muted">Quick Info</div>
         <div style="margin-top:8px">
           <div class="tag">Location: Nairobi, Kenya</div>
-          <div class="tag">Open to: Internships, Full-time roles</div>
+          <div class="tag">Open to: Full-time, Research</div>
         </div>
       </nav>
 
       <section>
-        <!-- Resume -->
-        <article id="resume" class="resume card">
-          <h2>Resume</h2>
+        <!-- Resume / CV outline -->
+        <article id="resume" class="resume card" aria-labelledby="resume-heading">
+          <h2 id="resume-heading">Resume</h2>
 
           <div class="section">
-            <h3>Objective</h3>
-            <p class="muted">Passionate software developer with hands-on experience in web technologies (HTML, CSS, JavaScript, PHP, MySQL). Seeking to contribute to organizational goals through system development, ICT maintenance, and technical support while gaining valuable experience.</p>
-          </div>
-
-          <div class="section">
-            <h3>Experience</h3>
-            <p><strong>IT Intern — Africa Medilink Limited</strong> <span class="muted">(2025 – Present, Nairobi)</span></p>
+            <h3>Academic Background</h3>
+            <div class="muted">Ph.D./M.Sc./B.Sc — Institution Name — Year</div>
             <ul>
-              <li>Assisted in developing and maintaining internal web systems with PHP/MySQL.</li>
-              <li>Provided ICT support and troubleshooting for staff.</li>
-              <li>Helped configure and maintain network infrastructure.</li>
-              <li>Documented ICT support requests, improving response efficiency.</li>
+              <li><strong>B.Sc. Computer Science</strong>, University of Example — 2023</li>
+              <li><strong>M.Sc. Cybersecurity</strong>, University of Example — 2025</li>
             </ul>
           </div>
 
           <div class="section">
-            <h3>Education</h3>
+            <h3>Work Experience</h3>
+            <div>
+              <strong>Software Engineer — Acme Tech</strong> <span class="muted">(2024 — Present)</span>
+              <div class="muted">Worked on backend services, security automation, and ML model deployment. Key contributions: CI/CD pipelines, vulnerability detection tool.</div>
+            </div>
+            <div style="margin-top:8px">
+              <strong>Research Intern — SecureLab</strong> <span class="muted">(2023 — 2024)</span>
+              <div class="muted">Published study on intrusion detection using graph neural networks and evaluated on public datasets.</div>
+            </div>
+          </div>
+
+          <div class="section">
+            <h3>Certifications</h3>
+            <div class="muted">Examples:</div>
             <ul>
-              <li><strong>Diploma in ICT</strong>, NIBS Technical College, Kiambu — 2022–2025</li>
-              <li><strong>KCSE</strong>, Upper Hill School, Nairobi — 2016–2019</li>
+              <li>Certified Kubernetes Administrator (CKA) — 2024</li>
+              <li>Offensive Security Certified Professional (OSCP) — 2025</li>
             </ul>
           </div>
 
           <div class="section">
             <h3>Skills</h3>
+            <div class="muted">Languages, Tools & Areas</div>
             <div style="margin-top:8px">
-              <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
-              <span class="tag">PHP</span><span class="tag">MySQL</span>
-              <span class="tag">Git</span><span class="tag">Linux</span><span class="tag">Windows</span>
-              <span class="tag">Troubleshooting</span><span class="tag">Teamwork</span><span class="tag">Time Management</span>
+              <span class="tag">Python</span><span class="tag">Go</span><span class="tag">JavaScript</span>
+              <span class="tag">Linux</span><span class="tag">Docker</span><span class="tag">Kubernetes</span>
+              <span class="tag">Network Security</span><span class="tag">Forensics</span>
             </div>
           </div>
         </article>
@@ -116,51 +162,234 @@
         <!-- Projects -->
         <article id="projects" class="card" style="margin-top:18px">
           <h2>Projects</h2>
-          <div class="projects">
+          <p class="muted">A curated selection of projects demonstrating engineering, research and product skills. Click to view details.</p>
+
+          <div class="projects" style="margin-top:12px">
+            <!-- Project 1 -->
             <div class="card-project">
-              <h3>Portfolio Website</h3>
-              <div class="project-meta">HTML · CSS · JavaScript</div>
-              <p class="muted">Responsive personal website showcasing projects and CV.</p>
+              <h3>1) Intrusion Detection with GNNs</h3>
+              <div class="project-meta">Python · PyTorch · Network Security · Research</div>
+              <p class="muted">Built a graph-based model to detect lateral movement in simulated networks. Achieved X% ROC AUC on dataset.</p>
+              <div style="margin-top:8px"><button class="btn" onclick="openProject(1)">View writeup</button></div>
             </div>
+
+            <!-- Project 2 -->
             <div class="card-project">
-              <h3>Inventory Management System</h3>
-              <div class="project-meta">PHP · MySQL</div>
-              <p class="muted">Built to manage stock levels with CRUD operations.</p>
+              <h3>2) Secure CI/CD Pipeline</h3>
+              <div class="project-meta">Go · Docker · GitHub Actions</div>
+              <p class="muted">Designed a secure build pipeline with policy checks, SBOM generation, and automated vulnerability scanning.</p>
+              <div style="margin-top:8px"><button class="btn" onclick="openProject(2)">View writeup</button></div>
             </div>
+
+            <!-- Project 3 -->
             <div class="card-project">
-              <h3>Student Results Portal</h3>
-              <div class="project-meta">PHP · MySQL</div>
-              <p class="muted">Web app for managing exam results with authentication.</p>
+              <h3>3) Capture-the-Flag Toolkit</h3>
+              <div class="project-meta">Bash · Python · Automation</div>
+              <p class="muted">A collection of scripts to accelerate triage during CTFs: enumeration, exploit scaffolding and report generation.</p>
+              <div style="margin-top:8px"><button class="btn" onclick="openProject(3)">View writeup</button></div>
             </div>
+          </div>
+
+          <!-- Project modal area -->
+          <div id="projectModal" class="modal" role="dialog" aria-hidden="true">
+            <div class="inner">
+              <div id="projectContent"></div>
+              <div style="text-align:right;margin-top:8px"><button class="btn" onclick="closeModal()">Close</button></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Lab Challenges -->
+        <article id="labs" class="card" style="margin-top:18px">
+          <h2>Lab Challenges</h2>
+          <p class="muted">Selected lab challenges. For each: problem statement, approach, tools used, screenshots (placeholders), and lessons learned.</p>
+
+          <div style="margin-top:12px">
+            <!-- Lab 1 -->
+            <details class="lab" open>
+              <summary>Lab 1 — Web App SQL Injection (Beginner)</summary>
+              <div style="margin-top:8px">
+                <strong>Problem statement</strong>
+                <p class="muted">Exploit a vulnerable web app to retrieve the admin password from the database.</p>
+
+                <strong>Approach</strong>
+                <p>Manual testing to find injectable fields, craft payloads to enumerate schema and extract data. Used time-based and UNION-based techniques where applicable.</p>
+
+                <strong>Tools used</strong>
+                <div class="tools">Burp Suite, sqlmap, curl, sqlite3</div>
+
+                <strong>Screenshots</strong>
+                <div style="margin-top:8px">
+                  <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='300'><rect width='100%' height='100%' fill='%23071426'/><text x='50%' y='50%' alignment-baseline='middle' text-anchor='middle' fill='%239aa4b2' font-size='18'>Screenshot placeholder — replace with actual screenshot</text></svg>" alt="screenshot placeholder" style="max-width:100%;border-radius:8px;border:1px solid var(--glass-border)" />
+                </div>
+
+                <strong>Key lessons learned</strong>
+                <ul>
+                  <li>Always validate and parameterize queries at the server-side.</li>
+                  <li>Automated tools speed up exploitation but manual inspection is essential to craft payloads for custom filters.</li>
+                </ul>
+              </div>
+            </details>
+
+            <!-- Lab 2 -->
+            <details class="lab">
+              <summary>Lab 2 — Binary Exploit (Buffer Overflow) (Intermediate)</summary>
+              <div style="margin-top:8px">
+                <strong>Problem statement</strong>
+                <p class="muted">Exploit a vulnerable C binary to gain a shell on the lab VM.</p>
+                <strong>Approach</strong>
+                <p>Static analysis with Ghidra, identify vulnerable function, craft ROP chain to bypass NX/ASLR where required, and test on local VM.</p>
+                <strong>Tools used</strong>
+                <div class="tools">Ghidra, pwntools, gdb, QEMU</div>
+                <strong>Screenshots</strong>
+                <div style="margin-top:8px"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='300'><rect width='100%' height='100%' fill='%23071426'/><text x='50%' y='50%' alignment-baseline='middle' text-anchor='middle' fill='%239aa4b2' font-size='18'>Binary exploit screenshot placeholder</text></svg>" alt="screenshot placeholder" style="max-width:100%;border-radius:8px;border:1px solid var(--glass-border)"/></div>
+                <strong>Key lessons learned</strong>
+                <ul>
+                  <li>Careful memory layout analysis is required; debug symbols accelerate the process.</li>
+                  <li>Modern mitigations require creative chaining and fallback strategies.</li>
+                </ul>
+              </div>
+            </details>
+
+            <!-- Lab 3 -->
+            <details class="lab">
+              <summary>Lab 3 — Network Forensics (Pcap Analysis) (Intermediate)</summary>
+              <div style="margin-top:8px">
+                <strong>Problem statement</strong>
+                <p class="muted">Analyze a provided pcap to identify exfiltrated files and the C2 infrastructure.</p>
+                <strong>Approach</strong>
+                <p>Use Wireshark to filter suspicious flows, extract files from HTTP/SMTP, and map IPs to domains using passive DNS and whois.</p>
+                <strong>Tools used</strong>
+                <div class="tools">Wireshark, tcpdump, networkx, python (scapy)</div>
+                <strong>Screenshots</strong>
+                <div style="margin-top:8px"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='300'><rect width='100%' height='100%' fill='%23071426'/><text x='50%' y='50%' alignment-baseline='middle' text-anchor='middle' fill='%239aa4b2' font-size='18'>PCAP analysis placeholder</text></svg>" alt="screenshot placeholder" style="max-width:100%;border-radius:8px;border:1px solid var(--glass-border)"/></div>
+                <strong>Key lessons learned</strong>
+                <ul>
+                  <li>Effective filtering reduces noise; scripting helps reproducibility.</li>
+                  <li>Documenting the analysis steps is essential for later handoff.</li>
+                </ul>
+              </div>
+            </details>
+
           </div>
         </article>
 
         <!-- Contact -->
         <article id="contact" class="card" style="margin-top:18px">
           <h2>Contact</h2>
-          <div style="margin-top:8px">
-            <p><strong>Email:</strong> <a href="mailto:emuriukioff@gmail.com" style="color:var(--accent)">emuriukioff@gmail.com</a></p>
-            <p><strong>Phone:</strong> +254 702 043 631</p>
-            <p><strong>GitHub:</strong> <a href="https://github.com/Eric-Muriuki" target="_blank" style="color:var(--accent)">Eric-Muriuki</a></p>
-            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/yourprofile" target="_blank" style="color:var(--accent)">linkedin.com/in/yourprofile</a></p>
+          <p class="muted">Reach out for collaborations, roles, or to request full writeups and datasets.</p>
+          <div style="display:flex;gap:12px;align-items:center;margin-top:6px">
+            <div>
+              <div style="font-weight:700">Email</div>
+              <div class="muted"><a href="mailto:your.email@example.com" style="color:var(--accent)">your.email@example.com</a></div>
+            </div>
+            <div>
+              <div style="font-weight:700">LinkedIn</div>
+              <div class="muted"><a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener" style="color:var(--accent)">linkedin.com/in/yourprofile</a></div>
+            </div>
+            <div>
+              <div style="font-weight:700">GitHub</div>
+              <div class="muted"><a href="https://github.com/yourusername" target="_blank" rel="noopener" style="color:var(--accent)">github.com/yourusername</a></div>
+            </div>
           </div>
         </article>
+
       </section>
     </main>
 
     <footer>
-      <div class="muted">© <span id="year"></span> Eric Muriuki — Portfolio</div>
+      <div class="muted">© <span id="year"></span> Your Name — Portfolio</div>
       <div class="social">
-        <a href="https://github.com/Eric-Muriuki" target="_blank">GitHub</a>
-        <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
-        <a href="mailto:emuriukioff@gmail.com">Email</a>
+        <a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:your.email@example.com">Email</a>
       </div>
     </footer>
   </div>
 
   <script>
+    // ---------- Simple interactivity ----------
     document.getElementById('year').textContent = new Date().getFullYear();
-    function downloadResume(){ window.print(); }
+
+    function openProject(id){
+      const content = document.getElementById('projectContent');
+      let html = '';
+      if(id===1){
+        html = `
+          <h3>Intrusion Detection with GNNs</h3>
+          <p class="muted">Role: Lead researcher / implementation</p>
+          <strong>Problem statement</strong>
+          <p>Detect lateral movement in a simulated enterprise network by modelling hosts and connections as a graph.</p>
+          <strong>Approach</strong>
+          <p>Constructed node/edge features from flow logs, trained a GNN for anomaly detection, and evaluated with precision/recall and ROC-AUC.</p>
+          <strong>Tools</strong>
+          <div class="tools">Python, PyTorch Geometric, scikit-learn</div>
+          <strong>Key results</strong>
+          <p class="muted">ROC AUC: 0.92 (example). See repository for code and datasets.</p>
+        `;
+      } else if(id===2){
+        html = `
+          <h3>Secure CI/CD Pipeline</h3>
+          <p class="muted">Role: DevOps / Security engineer</p>
+          <strong>Problem statement</strong>
+          <p>Implement reproducible and secure builds for microservices with SBOM and policy gates.</p>
+          <strong>Approach</strong>
+          <p>Used GitHub Actions, inlined policy checks, signed artifacts and generated SBOMs via syft during the build.</p>
+          <strong>Tools</strong>
+          <div class="tools">GitHub Actions, Docker, syft, trivy</div>
+          <strong>Key results</strong>
+          <p class="muted">Pipeline enforces no-critical-vulns and produces SBOMs; integration tests run in isolated ephemeral agents.</p>
+        `;
+      } else if(id===3){
+        html = `
+          <h3>CTF Toolkit</h3>
+          <p class="muted">Role: Author & maintainer</p>
+          <strong>Problem statement</strong>
+          <p>Speed up routine CTF tasks: enumeration, exploitation scaffolding, and reporting.</p>
+          <strong>Approach</strong>
+          <p>Collection of CLI tools and Python scripts; modular design so tasks can be combined or used separately.</p>
+          <strong>Tools</strong>
+          <div class="tools">Bash, Python, nmap, jq</div>
+          <strong>Key results</strong>
+          <p class="muted">Reduced time-to-first-flag on CTFs by automating repeated steps. Public repo with usage examples.</p>
+        `;
+      }
+      content.innerHTML = html;
+      document.getElementById('projectModal').classList.add('open');
+      document.getElementById('projectModal').setAttribute('aria-hidden','false');
+    }
+
+    function closeModal(){
+      document.getElementById('projectModal').classList.remove('open');
+      document.getElementById('projectModal').setAttribute('aria-hidden','true');
+    }
+
+    // Download/print resume — simple: print the page which uses print CSS
+    function downloadResume(){
+      window.print();
+    }
+
+    // Small helper: replace placeholders automatically from a JS object (edit here to personalise)
+    (function personalize(){
+      const info = {
+        name: 'Your Name',
+        tagline: 'Software Engineer • Cybersecurity Researcher • ML Enthusiast',
+        email: 'your.email@example.com',
+        linkedIn: 'https://www.linkedin.com/in/yourprofile',
+        github: 'https://github.com/yourusername',
+        location: 'Nairobi, Kenya'
+      };
+      document.getElementById('name').textContent = info.name;
+      document.getElementById('tagline').textContent = info.tagline;
+      // update links
+      document.querySelector('a[href^="mailto:"]').href = 'mailto:' + info.email;
+      document.querySelector('a[href^="mailto:"]').textContent = info.email;
+      const links = document.querySelectorAll('.social a');
+      links[0].href = info.github; links[1].href = info.linkedIn; links[2].href = 'mailto:' + info.email;
+      // nav quick info
+      document.querySelector('nav.card .tag').textContent = 'Location: ' + info.location;
+    })();
+
   </script>
 </body>
 </html>
